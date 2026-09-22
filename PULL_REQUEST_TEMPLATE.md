@@ -1,3 +1,5 @@
+> Before requesting review, check the [Definition of Done](https://github.com/kuec-engineering/.github/blob/main/docs/definition-of-done.md).
+
 ## What & why
 <!-- 1–3 sentences. Link the issue: Closes #123 -->
 
