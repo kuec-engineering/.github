@@ -3,17 +3,32 @@
 ## Branching (GitHub Flow)
 - `main` is always deployable. Every merge to `main` deploys to the demo environment.
 - Branch from the latest `main`. One branch = one issue.
-- Name: `feat/123-short-desc` · `fix/123-short-desc` · `chore/short-desc` · `docs/short-desc`
 - Keep branches short: **merge within 2 days**. Longer? The issue is too big, so split it.
 - No `develop`, `release`, or `hotfix` branches. Urgent fixes use the same flow, just reviewed first.
 
+### Branch naming
+```
+<name>/<yyyymmdd>-<issue>-<short-desc>          work you do yourself
+<name>/claude/<yyyymmdd>-<issue>-<short-desc>   work done with Claude
+```
+Examples: `amoudi/20260924-12-partner-intake`, `amoudi/claude/20260924-3-creating-skeleton`
+
+- `<name>` is your first name or GitHub handle, lowercase
+- `<yyyymmdd>` is the date the branch is created
+- `<issue>` is the number of the issue the branch works on
+- `<short-desc>` is a few lowercase words joined by hyphens
+- `<name>` and `<name>/claude` are folders. Never create a branch with exactly that name, because Git would then refuse every branch inside it
+
+The type of change (`feat`, `fix`, …) goes in the **PR title**, not the branch name.
+
 ### Daily commands
 ```bash
-git switch main && git pull                    # start from latest main
-git switch -c feat/123-login-form              # new branch
-git add -p && git commit -m "wip: form layout" # commit often, messages can be rough
-git fetch origin && git rebase origin/main     # update your branch with main
-git push -u origin feat/123-login-form         # push, then open PR on GitHub
+git switch main && git pull                             # start from latest main
+git switch -c amoudi/20260928-12-login-form             # new branch (yourself)
+git switch -c amoudi/claude/20260928-12-login-form      # new branch (with Claude)
+git add -p && git commit -m "wip: form layout"          # commit often, messages can be rough
+git fetch origin && git rebase origin/main              # update your branch with main
+git push -u origin amoudi/20260928-12-login-form        # push, then open PR on GitHub
 ```
 Rough commit messages are fine. Only the **PR title** ends up in `main`'s history (squash merge).
 
